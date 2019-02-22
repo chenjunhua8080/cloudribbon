@@ -1,0 +1,28 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/
+server:
+  port: 8200
+spring:
+  application:
+    name: service-ribbon
+management: #配置Hystrix暴露链接/hystrix.stream，供仪表板监控
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+swagger: #配置swagger
+  enabled: true
+  title: ribbonService 的swagger文档
+  version: 1.0
+  contact:
+    name: cjh
+    email: 1109551489@qq.com
+  base-path: #负载url
+  - /location/**
+  - /weather/**
+  exclude-path: #除此之外
+  - /canExcludeSomeUrl
+  ui-config:
+    show-request-headers: true
